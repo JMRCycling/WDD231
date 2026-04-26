@@ -259,9 +259,11 @@ svg {
   gap: 1rem;
 }
 
-.hero-banner__title {
+.hero-banner__title,
+.hero-banner__title:link,
+.hero-banner__title:visited {
   display: block;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
   color: var(--bs-white);
   text-decoration: none;
@@ -371,12 +373,22 @@ svg {
 
 /* Responsive */
 
+@media (min-width: 480px) {
+  .hero-banner__title,
+  .hero-banner__title:link,
+  .hero-banner__title:visited {
+    font-size: 3rem;
+  }
+}
+
 @media (min-width: 768px) {
   .hero-banner {
     min-height: 420px;
   }
 
-  .hero-banner__title {
+  .hero-banner__title,
+  .hero-banner__title:link,
+  .hero-banner__title:visited {
     font-size: 4rem;
   }
 
@@ -412,7 +424,9 @@ svg {
     min-height: 500px;
   }
 
-  .hero-banner__title {
+  .hero-banner__title,
+  .hero-banner__title:link,
+  .hero-banner__title:visited {
     font-size: 5rem;
   }
 
