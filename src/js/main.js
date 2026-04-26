@@ -2,38 +2,36 @@ import { getParkData } from "./parkService.mjs";
 
 const parkData = getParkData();
 
-populateHero(parkData);
+function parkInfoTemplate(info) {
+  return `<a href="${info.url}" class="hero-banner__title">${info.name}</a>
+  <p class="hero-banner__subtitle">
+    <span>${info.designation}</span>
+    <span>${info.states}</span>
+  </p>`;
+}
+
+// 1. Update the disclaimer link text and URL
+const disclaimer = document.querySelector(".disclaimer > a");
+disclaimer.href = parkData.url;
+disclaimer.textContent = parkData.fullName;
+
+// 2. Update the page title
+document.querySelector("head > title").textContent = parkData.fullName;
+
+// 3. Use the first image in the data for the hero image
+const img = document.querySelector(".hero-banner > img");
+img.src = parkData.images[0].url;
+img.alt = parkData.images[0].altText;
+
+// 4. Update the park name, designation, and states in the hero
+document.querySelector(".hero-banner__content").innerHTML =
+  parkInfoTemplate(parkData);
+
 populateMain(parkData);
 populateFooter(parkData);
 
-function populateHero(parkData) {
-
-  const disclaimerLink = document.querySelector(".disclaimer a");
-  disclaimerLink.textContent = parkData.fullName;
-  disclaimerLink.href = parkData.url;
-
-
-  document.title = `${parkData.fullName} (U.S. National Park Service)`;
-
-
-  const img = document.querySelector(".hero-banner img");
-  img.src = parkData.images[0].url;
-  img.alt = parkData.images[0].altText;
-
-  const title = document.querySelector(".hero-banner__title");
-  title.textContent = parkData.name;
-  title.href = parkData.url;
-
-  const [designationEl, statesEl] = document.querySelectorAll(
-    ".hero-banner__subtitle span"
-  );
-  designationEl.textContent = parkData.designation;
-  statesEl.textContent = parkData.states;
-}
-
 function populateMain(parkData) {
-  const main = document.getElementById("main");
-  main.innerHTML = `
+  document.getElementById("main").innerHTML = `
     <section class="park-description">
       <h2>About ${parkData.name}</h2>
       <p>${parkData.description}</p>
@@ -50,7 +48,7 @@ function populateFooter(parkData) {
   const email = parkData.contacts.emailAddresses[0];
   const address = parkData.addresses.find((a) => a.type === "Physical");
 
-  document.getElementById("park-footer").innerHTML = `
+  document.getElementById("footer").innerHTML = `
     <div class="footer-contact">
       <h2>${parkData.fullName}</h2>
       <address>
