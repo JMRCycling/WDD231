@@ -22,7 +22,7 @@ export function parkIntroTemplate(data) {
 export function mediaCardTemplate(info) {
   return `<div class="media-card">
             <a href="${info.link}" class="media-card__image-link">
-              <img src="${info.image}" alt="${info.name}" class="media-card__image">
+              <img src="${info.image}" alt="${info.name}" class="media-card__image" onerror="this.style.display='none'">
             </a>
             <div class="media-card__content">
               <h3 class="media-card__title">

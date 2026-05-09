@@ -180,22 +180,32 @@ const park = {
 };
 
 const baseUrl = "https://developer.nps.gov/api/v1/";
+const apiKey = import.meta.env.VITE_NPS_API_KEY;
 const parkName = "glac";
 
-
 export async function getParkData() {
+  const parkData = await getJson(`parks?parkCode=${parkName}`);
+  return parkData.data[0];
+}
+
+export async function getVisitorCenterData() {
+  const visitorCenterData = await getJson(`visitorcenters?parkCode=${parkName}`);
+  return visitorCenterData.data[0];
+}
+
+async function getJson(url) {
   const options = {
     method: "GET",
     headers: {
-      "X-Api-Key": import.meta.env.VITE_NPS_API_KEY
+      "X-Api-Key": apiKey
     }
   };
-  let data = {}
-  const response = await fetch(`${baseUrl}parks?parkCode=${parkName}`, options);
+  let data = {};
+  const response = await fetch(baseUrl + url, options);
   if (response.ok) {
     data = await response.json();
-  } else throw new Error("Response not ok");
-  return data.data[0];
+  } else throw new Error("response not ok");
+  return data;
 }
 
 export function getInfoLinks(images) {
@@ -210,7 +220,7 @@ export function getInfoLinks(images) {
     {
       name: "Fees and Passes &#x203A;",
       link: "fees.html",
-      image: images[1].url,
+      image: images[3].url,
       description: "Learn about the fees and passes that are available."
     },
     {
