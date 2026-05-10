@@ -1,0 +1,62 @@
+#footer {
+  background-color: var(--bs-madison);
+  background-image: url("../../images/topo_pattern.png");
+  color: var(--bs-grey-4);
+  padding: 2rem 1rem;
+}
+
+#footer h2 {
+  font-size: 1.1rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+#footer a {
+  color: var(--bs-chathams-blue-2);
+}
+
+.footer-contact address {
+  font-style: normal;
+  line-height: 1.75;
+  margin-bottom: 0.75rem;
+}
+
+.footer-directions {
+  margin-top: 2rem;
+}
+
+.footer-directions a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+/* Responsive */
+
+@media (min-width: 768px) {
+  #footer {
+    padding: 2rem 1.5rem;
+  }
+
+  #footer > div {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    gap: 3rem;
+  }
+
+  .footer-contact {
+    flex: 1;
+  }
+
+  .footer-directions {
+    flex: 2;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  #footer > div {
+    max-width: 1100px;
+  }
+}

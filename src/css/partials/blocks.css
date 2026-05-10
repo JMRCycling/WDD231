@@ -1,0 +1,49 @@
+.media-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.media-card__image-link {
+  display: block;
+}
+
+.media-card__image {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.media-card__content {
+  padding-top: 0.75rem;
+}
+
+.media-card__title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0 0 0.5rem;
+}
+
+.media-card__title a,
+.media-card__title a:link,
+.media-card__title a:visited {
+  color: var(--bs-grey-4);
+  text-decoration: none;
+}
+
+.media-card__title a:hover {
+  text-decoration: underline;
+}
+
+.media-card__description {
+  margin: 0;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .media-cards {
+    grid-template-columns: 1fr;
+  }
+}
